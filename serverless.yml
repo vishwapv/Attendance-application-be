@@ -1,0 +1,16 @@
+service: edrahi-api
+
+provider:
+ name: aws
+ runtime: nodejs8.12.0 # Node JS version
+ memorySize: 2048
+ timeout: 9999
+ stage: production
+ region: ap-south-1 # AWS region
+
+functions:
+ api:
+   handler: lambda.handler
+   events:
+     - http: ANY {proxy+}
+     - http: ANY /
